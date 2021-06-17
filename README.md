@@ -13,7 +13,7 @@
 
 ### Require that member overloads be consecutive <a id="rules-for-eslint"></a>
 
-Use `'@typescript-eslint/adjacent-overload-signatures': 'error'`, because grouping overloaded members together can improve readability of the code. 
+Use [`'@typescript-eslint/adjacent-overload-signatures': 'error'`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/adjacent-overload-signatures.md), because grouping overloaded members together can improve readability of the code. 
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Bad pattern`
 
@@ -49,7 +49,7 @@ export function foo(sn: string | number): void;
   
 ### Requires using either `T[]` or `Array<T>` for arrays <a id="array-types"></a>
 
-Always use T[] or readonly T[] for all array types.
+Use [`'@typescript-eslint/array-type': 'error'`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/array-type.md) for always using `T[]` or readonly `T[]` for all array types.
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Bad pattern`
 
