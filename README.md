@@ -4,6 +4,7 @@
 
 - [Require that member overloads be consecutive](#rules-for-eslint)
 - [Requires using either `T[]` or `Array<T>` for arrays](#array-types)
+- [Disallows awaiting a value that is not a Thenable](#await-thenable)
 
 ---
 
@@ -64,3 +65,26 @@ const y: ReadonlyArray<string> = ['a', 'b'];
 const x: string[] = ['a', 'b'];
 const y: readonly string[] = ['a', 'b'];
 ```
+
+### Disallows awaiting a value that is not a Thenable <a id="await-thenable"></a>
+
+Use [`'@typescript-eslint/await-thenable': 'error'`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/await-thenable.md)
+
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Bad pattern`
+
+```ts
+await 'value';
+
+const createValue = () => 'value';
+await createValue();
+```
+
+![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `Good pattern`
+
+```ts
+await Promise.resolve('value');
+
+const createValue = async () => 'value';
+await createValue();
+```
+
