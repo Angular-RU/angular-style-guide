@@ -4,19 +4,16 @@ on: [push]
 
 jobs:
     setup:
-        if: "!contains(github.event.head_commit.message , 'ci skip')"
-
         runs-on: ubuntu-latest
-
         strategy:
             matrix:
-                node-version: [14.x]
-
+                node: ['14']
+        name: Node ${{ matrix.node }} sample
         steps:
-            - name: Run install step
-              uses: actions/setup-node@v1
+            - uses: actions/checkout@v2
+            - name: Setup node
+              uses: actions/setup-node@v2
               with:
-                  node-version: ${{ matrix.node-version }}
-              run: |
-                  yarn --ignore-engines --frozen-lockfile
-                  yarn format
+                  node-version: ${{ matrix.node }}
+            - run: yarn install
+            - run: yarn format
