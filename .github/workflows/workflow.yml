@@ -1,0 +1,42 @@
+name: Angular-RU style guide
+
+on: [push]
+
+jobs:
+    build-and-deploy:
+        if: "!contains(github.event.head_commit.message , 'ci skip')"
+
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node-version: [14.x]
+
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: '0'
+                  persist-credentials: false
+
+            - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Restore lerna
+              uses: actions/cache@v2
+              with:
+                  path: |
+                      .cache
+                      node_modules
+                      */*/node_modules
+                  key: ${{ runner.os }}--build-cache-hash--${{ hashFiles('**/yarn.lock') }}
+
+            - name: Run install step
+              run: |
+                  yarn --ignore-engines --frozen-lockfile
+            - name: Run format
+              run: |
+                  yarn format

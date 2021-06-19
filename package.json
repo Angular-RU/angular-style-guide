@@ -1,0 +1,29 @@
+{
+    "name": "angular-style-guide",
+    "version": "1.0.0",
+    "description": "**TypeScript + ESLint**",
+    "homepage": "https://github.com/Angular-RU/angular-style-guide#readme",
+    "bugs": {
+        "url": "https://github.com/Angular-RU/angular-style-guide/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Angular-RU/angular-style-guide.git"
+    },
+    "license": "ISC",
+    "author": "",
+    "main": "index.js",
+    "scripts": {
+        "format": "yarn package:sort && yarn pretty:format --write",
+        "package:lint": "yarn package:sort --check",
+        "package:sort": "yarn sort-package-json \"package.json\" \"packages/*/package.json\"",
+        "pretty:format": "yarn prettier \"**/*.{ts,html,css,scss,md,js,json}\"",
+        "pretty:lint": "yarn pretty:format --check"
+    },
+    "prettier": "@angular-ru/prettier-config",
+    "devDependencies": {
+        "@angular-ru/build-tools": "15.263.0",
+        "@angular-ru/prettier-config": "15.263.1",
+        "prettier": "2.3.1"
+    }
+}

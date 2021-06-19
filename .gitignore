@@ -1,0 +1,11 @@
+.npmrc
+*.iml
+*.log
+.idea
+**/dist/**
+**/out/**
+**/.cache**/
+**/node_modules**/
+
+.DS_Store
+.DS_Store?
