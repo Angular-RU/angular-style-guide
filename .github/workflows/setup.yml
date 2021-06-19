@@ -11,9 +11,16 @@ jobs:
         name: Node ${{ matrix.node }} sample
         steps:
             - uses: actions/checkout@v2
+              with:
+                  ref: ${{ github.head_ref }}
+
             - name: Setup node
               uses: actions/setup-node@v2
               with:
                   node-version: ${{ matrix.node }}
             - run: yarn install
             - run: yarn format
+
+            - uses: stefanzweifel/git-auto-commit-action@v4
+              with:
+                  commit_message: Apply changes
