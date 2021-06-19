@@ -27,10 +27,7 @@ jobs:
                       */*/node_modules
                   key: ${{ runner.os }}--build-cache-hash--${{ hashFiles('**/yarn.lock') }}
 
-
             - name: Run install step
               run: |
                   yarn --ignore-engines --frozen-lockfile
-            - name: Run format
-              run: |
                   yarn format
