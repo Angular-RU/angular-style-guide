@@ -1,9 +1,9 @@
-name: Angular-RU style guide
+name: setup
 
 on: [push]
 
 jobs:
-    build-and-deploy:
+    setup:
         if: "!contains(github.event.head_commit.message , 'ci skip')"
 
         runs-on: ubuntu-latest

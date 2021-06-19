@@ -1,13 +1,10 @@
 name: fixer
 
-on:
-    pull_request:
-    push:
-        branches:
-            - "main"
+on: [push, pull_request, pull_request_target]
 
 jobs:
-    php-cs-fixer:
+    fixer:
+        needs: setup
         runs-on: ubuntu-latest
 
         steps:
@@ -15,9 +12,6 @@ jobs:
               with:
                   ref: ${{ github.head_ref }}
 
-            - name: Run fixer
-              uses: docker://oskarstark/php-cs-fixer-ga
-
             - uses: stefanzweifel/git-auto-commit-action@v4
               with:
-                  commit_message: Apply fixer changes
+                  commit_message: Apply changes
