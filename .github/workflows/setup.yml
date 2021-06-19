@@ -13,21 +13,10 @@ jobs:
                 node-version: [14.x]
 
         steps:
-            - name: Use Node.js ${{ matrix.node-version }}
+            - name: Run install step
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
-
-            - name: Restore lerna
-              uses: actions/cache@v2
-              with:
-                  path: |
-                      .cache
-                      node_modules
-                      */*/node_modules
-                  key: ${{ runner.os }}--build-cache-hash--${{ hashFiles('**/yarn.lock') }}
-
-            - name: Run install step
               run: |
                   yarn --ignore-engines --frozen-lockfile
                   yarn format
