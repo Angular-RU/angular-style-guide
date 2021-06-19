@@ -21,6 +21,7 @@ jobs:
             - run: yarn install
             - run: yarn format
 
+            # auto git commit
             - uses: stefanzweifel/git-auto-commit-action@v4
               with:
-                  commit_message: Apply changes
+                  commit_message: apply changes
