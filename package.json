@@ -13,8 +13,6 @@
     "license": "ISC",
     "author": "",
     "main": "index.js",
-
-
     "scripts": {
         "format": "yarn package:sort && yarn pretty:format --write",
         "package:lint": "yarn package:sort --check",
