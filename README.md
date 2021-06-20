@@ -136,5 +136,5 @@ export function myFn() {
 // A return value of type number
 export function myFn(): number {
     return 1;
-};
+}
 ```
