@@ -125,7 +125,7 @@ input and output.
 
 ```ts
 // Should indicate that a number is returned
-export default function () {
+export function myFn() {
     return 1;
 }
 ```
@@ -134,7 +134,7 @@ export default function () {
 
 ```ts
 // A return value of type number
-export var fn = function (): number {
+export function myFn(): number {
     return 1;
 };
 ```
